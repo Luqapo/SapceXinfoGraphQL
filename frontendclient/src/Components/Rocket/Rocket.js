@@ -1,0 +1,36 @@
+import React from 'react';
+import { Link, withRouter } from 'react-router-dom';
+
+export function Rocket(props) {
+
+    const { rocket_id, rocket_name, rocket_type, first_flight } = props.rocket;
+    
+  return (
+    <div className="card card-body mb-3">
+      <div className="row">
+        <div className="col-md-9">
+            <h4>
+                <span>Rocket name: {rocket_name} </span>
+            </h4>
+            <ul className="list-group">
+                  <li className="list-group-item">
+                    Rocket id: {rocket_id}
+                  </li>
+                  <li className="list-group-item">
+                    Rocket type: {rocket_type}
+                  </li>
+                  <li className="list-group-item">
+                    First flight: {first_flight}
+                  </li>
+                </ul>
+            
+        </div>
+        <div className="col-md-3">
+            <Link to="/" className="btn btn-info">Back</Link>
+        </div>
+      </div>
+    </div>
+  )
+};
+
+export default withRouter(Rocket);
