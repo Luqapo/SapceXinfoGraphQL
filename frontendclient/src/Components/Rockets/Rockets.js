@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
+import { Link } from 'react-router-dom';
 
 import Spiner from '../UI/Spiner/Spiner';
 import Rocket from '../Rocket/Rocket';
@@ -31,6 +32,7 @@ export class Lunches extends Component {
             }
           }
           </Query>
+          <Link to="/" className="btn btn-info">Back</Link>
       </Fragment>
     )
   }

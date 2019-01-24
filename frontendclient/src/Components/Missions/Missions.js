@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
+import { Link } from 'react-router-dom';
 
 import Spiner from '../UI/Spiner/Spiner';
 import Mission from '../Mission/Mission';
@@ -27,11 +28,11 @@ export class Missions extends Component {
             ({ loading, error, data}) => {
               if(loading) return <Spiner />
               if(error) alert(error);
-              console.log(data);
               return data.missions.map(mission => <Mission mission={mission} key={mission.mission_id} />);
             }
           }
           </Query>
+          <Link to="/" className="btn btn-info">Back</Link>
       </Fragment>
     )
   }

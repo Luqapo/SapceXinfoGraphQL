@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
 
 export function Rocket(props) {
 
@@ -8,7 +7,7 @@ export function Rocket(props) {
   return (
     <div className="card card-body mb-3">
       <div className="row">
-        <div className="col-md-9">
+        <div className="col-md-12">
             <h4>
                 <span>Rocket name: {rocket_name} </span>
             </h4>
@@ -25,12 +24,9 @@ export function Rocket(props) {
                 </ul>
             
         </div>
-        <div className="col-md-3">
-            <Link to="/" className="btn btn-info">Back</Link>
-        </div>
       </div>
     </div>
   )
 };
 
-export default withRouter(Rocket);
+export default Rocket;
