@@ -8,7 +8,7 @@ export function LaunchItem(props) {
     const { flight_number, mission_name, launch_date_local, launch_success } = props.launch;
     
   return (
-    <div className="card card-body mb-3">
+    <div className="card card-body border-primary mb-3">
       <div className="row">
         <div className="col-md-9">
             <h4>

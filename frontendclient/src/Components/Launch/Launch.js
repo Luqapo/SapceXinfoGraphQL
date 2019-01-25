@@ -15,6 +15,10 @@ query LaunchQuery($flight_number: Int!) {
         launch_date_local
         launch_success
         details
+        links {
+          video_link
+          article_link
+        }
         rocket {
           rocket_id
           rocket_name
@@ -34,15 +38,20 @@ export class Launch extends Component {
         {({ loading, error, data}) => {
               if(loading) return <Spiner />
               if(error) alert(error);
-              console.log(data);
               const { 
                 mission_name, 
                 flight_number, 
                 launch_year, 
                 launch_success,
-                details, 
+                details,
+                links: {
+                  video_link,
+                  article_link
+                }, 
                 rocket: { rocket_id, rocket_name, rocket_type}
-              } = data.launch
+              } = data.launch;
+              console.log(video_link.split('=')[1]);
+              const filmUrl = video_link.split('=')[1];
               return ( 
               <div>
                 <h2 className=" dislapy-4 my-3"><span className="text-dark">Mission: {mission_name}</span></h2>
@@ -73,6 +82,8 @@ export class Launch extends Component {
                   </li>
                 </ul>
                 <p className="my-3 p-3 card">{details}</p>
+                <iframe src={`https://youtube.com/embed/${filmUrl}`} title={mission_name} width="550" height="315" allowFullScreen/>
+                <iframe src={article_link} title={mission_name} width="550" height="315" allowFullScreen/>
                 <Link className="btn btn-primary" to="/">Back</Link>
               </div>
               )

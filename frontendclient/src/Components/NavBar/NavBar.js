@@ -1,7 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import classNames from 'classnames';
 
-export default function NavBar() {
+export function NavBar(props) {
+    const url = props.history.location.pathname;
   return (
     <nav className="navbar navbar-expand-sm navbar-light bg-light">
         <Link className="navbar-brand" to="/">Home</Link>
@@ -10,13 +12,22 @@ export default function NavBar() {
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
-            <li className="nav-item active">
+            <li className={classNames({
+                'nav-item active': (url === '/launches'),
+                'nav-item': !(url === '/launches')
+            })}>
                 <Link className="nav-link" to="/launches">Launches</Link>
             </li>
-            <li className="nav-item">
+            <li className={classNames({
+                'nav-item active': (url === '/missions'),
+                'nav-item': !(url === '/missions')
+            })}>
                 <Link className="nav-link" to="/missions">Missions</Link>
             </li>
-            <li className="nav-item">
+            <li className={classNames({
+                'nav-item active': (url === '/rockets'),
+                'nav-item': !(url === '/rockets')
+            })}>
                 <Link className="nav-link" to="/rockets">Rockets</Link>
             </li>
             </ul>
@@ -24,3 +35,5 @@ export default function NavBar() {
     </nav>
   )
 }
+
+export default withRouter(NavBar);

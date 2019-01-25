@@ -5,7 +5,7 @@ export function Rocket(props) {
     const { rocket_id, rocket_name, rocket_type, first_flight } = props.rocket;
     
   return (
-    <div className="card card-body mb-3">
+    <div className="card card-body border-primary mb-3">
       <div className="row">
         <div className="col-md-12">
             <h4>

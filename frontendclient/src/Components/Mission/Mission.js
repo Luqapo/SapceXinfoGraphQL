@@ -5,7 +5,7 @@ export function Mission(props) {
     const { mission_id, mission_name, manufacturers, payload_ids, description } = props.mission;
     
   return (
-    <div className="card card-body mb-3">
+    <div className="card card-body border-primary mb-3">
       <div className="row">
         <div className="col-md-12">
             <h4>
