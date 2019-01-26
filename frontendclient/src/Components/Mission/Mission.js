@@ -15,14 +15,14 @@ export function Mission(props) {
                   <li className="list-group-item">
                     Mission id: {mission_id}
                   </li>
-                  <li className="list-group-item my-2">
+                  <li className="list-group-item my-2 border-secondary">
                     <h5>Manufacturers: </h5>
                     <ul className="list-group"> {manufacturers.map(manufacturer => (
                       <li className="list-group-item my-1" key={manufacturer}>{manufacturer}</li>)
                       )}
                       </ul>
                   </li>
-                  <li className="list-group-item my-2">
+                  <li className="list-group-item my-2 border-secondary">
                     <h5>Payload:</h5>
                       <ul className="list-group"> {payload_ids.map(payload => (
                       <li className="list-group-item my-1" key={payload}>{payload}</li>)

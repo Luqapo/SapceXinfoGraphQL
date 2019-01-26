@@ -36,7 +36,7 @@ export class Launch extends Component {
       <Fragment>
         <Query query={LAUNCH_QUERY} variables={{flight_number}}>
         {({ loading, error, data}) => {
-              if(loading) return <Spiner />
+              if(loading) return <div className="text-center"><Spiner /></div>
               if(error) alert(error);
               const { 
                 mission_name, 
@@ -50,41 +50,46 @@ export class Launch extends Component {
                 }, 
                 rocket: { rocket_id, rocket_name, rocket_type}
               } = data.launch;
-              console.log(video_link.split('=')[1]);
               const filmUrl = video_link.split('=')[1];
-              return ( 
-              <div>
-                <h2 className=" dislapy-4 my-3"><span className="text-dark">Mission: {mission_name}</span></h2>
-                <ul className="list-group">
-                  <li className="list-group-item">
-                    Flight number: {flight_number}
-                  </li>
-                  <li className="list-group-item">
-                    Flight year: {launch_year}
-                  </li>
-                  <li className="list-group-item">
-                    Flight status: <span className={classNames({
-                      'text-success': launch_success,
-                      'text-danger': !launch_success
-                    })}>{launch_success ? 'YES' : 'NO'}</span>
-                  </li>
-                </ul>
-                <h4 className="my-3">Rocket details</h4>
-                <ul className="list-group">
-                  <li className="list-group-item">
-                    Rocket id: {rocket_id}
-                  </li>
-                  <li className="list-group-item">
-                    Rocket name: {rocket_name}
-                  </li>
-                  <li className="list-group-item">
-                    Rocket type: {rocket_type}
-                  </li>
-                </ul>
+              return (
+                <div>
+              <div className="row">
+                <div className="col-md-7">
+                  <h2 className=" dislapy-4 my-3"><span className="text-dark">Mission: {mission_name}</span></h2>
+                  <ul className="list-group">
+                    <li className="list-group-item">
+                      Flight number: {flight_number}
+                    </li>
+                    <li className="list-group-item">
+                      Flight year: {launch_year}
+                    </li>
+                    <li className="list-group-item">
+                      Flight status: <span className={classNames({
+                        'text-success': launch_success,
+                        'text-danger': !launch_success
+                      })}>{launch_success ? 'YES' : 'NO'}</span>
+                    </li>
+                  </ul>
+                  <h4 className="my-3">Rocket details</h4>
+                  <ul className="list-group">
+                    <li className="list-group-item">
+                      Rocket id: {rocket_id}
+                    </li>
+                    <li className="list-group-item">
+                      Rocket name: {rocket_name}
+                    </li>
+                    <li className="list-group-item">
+                      Rocket type: {rocket_type}
+                    </li>
+                  </ul>
+                </div>
+                <div className="col-md-5">
+                  <iframe src={`https://youtube.com/embed/${filmUrl}`} title={mission_name} width="400" height="250" allowFullScreen/>
+                </div>
                 <p className="my-3 p-3 card">{details}</p>
-                <iframe src={`https://youtube.com/embed/${filmUrl}`} title={mission_name} width="550" height="315" allowFullScreen/>
-                <iframe src={article_link} title={mission_name} width="550" height="315" allowFullScreen/>
-                <Link className="btn btn-primary" to="/">Back</Link>
+              </div>
+                <a href={article_link} alt="article" className="btn btn-info m-2">Arcticle</a>
+                <Link className="btn btn-primary m-2" to="/launches">Back</Link>
               </div>
               )
             }}

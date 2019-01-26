@@ -21,7 +21,7 @@ class App extends Component {
     return (
         <Router>
           <ApolloProvider client={client} >
-              <div className="container">
+              <div className="container bg-light">
                 <NavBar />
                 <Switch>
                   <Route path="/launch/:flight_number" component={Launch} />
