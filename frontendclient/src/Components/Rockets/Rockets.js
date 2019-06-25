@@ -25,7 +25,7 @@ export class Lunches extends Component {
           <Query query={ROCKETS_QUERY}>
           {
             ({ loading, error, data}) => {
-              if(loading) return <div className="text-center"><Spiner /></div>
+              if(loading) return <Spiner />
               if(error) alert(error);
               console.log(data);
               return data.rockets.map(rocket => <Rocket rocket={rocket} key={rocket.rocket_id} />);

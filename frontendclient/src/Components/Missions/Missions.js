@@ -26,7 +26,7 @@ export class Missions extends Component {
           <Query query={MISSIONS_QUERY}>
           {
             ({ loading, error, data}) => {
-              if(loading) return <div className="text-center"><Spiner /></div>
+              if(loading) return <Spiner />
               if(error) alert(error);
               return data.missions.map(mission => <Mission mission={mission} key={mission.mission_id} />);
             }

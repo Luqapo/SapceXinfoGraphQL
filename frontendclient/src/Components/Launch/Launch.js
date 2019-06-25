@@ -30,14 +30,17 @@ query LaunchQuery($flight_number: Int!) {
 
 export class Launch extends Component {
   render() {
+    
     let { flight_number } = this.props.match.params;
     flight_number = parseInt(flight_number);
+
     return (
       <Fragment>
         <Query query={LAUNCH_QUERY} variables={{flight_number}}>
         {({ loading, error, data}) => {
-              if(loading) return <div className="text-center"><Spiner /></div>
+              if(loading) return <Spiner />
               if(error) alert(error);
+
               const { 
                 mission_name, 
                 flight_number, 
@@ -51,6 +54,7 @@ export class Launch extends Component {
                 rocket: { rocket_id, rocket_name, rocket_type}
               } = data.launch;
               const filmUrl = video_link.split('=')[1];
+              
               return (
                 <div>
               <div className="row">

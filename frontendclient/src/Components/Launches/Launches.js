@@ -25,7 +25,7 @@ export class Lunches extends Component {
           <Query query={LAUNCHES_QUERY}>
           {
             ({ loading, error, data}) => {
-              if(loading) return <div className="text-center"><Spiner /></div>
+              if(loading) return <Spiner />
               if(error) alert(error);
               return data.launches.map(launch => <LaunchItem launch={launch} key={launch.flight_number} />);
             }
